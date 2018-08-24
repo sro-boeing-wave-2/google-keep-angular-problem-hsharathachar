@@ -1,0 +1,54 @@
+<mat-card class="postnote">
+
+    <h2>Enter the Note details</h2>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+      <label><br>
+        <h3><b>Title:</b></h3>
+        <input type="text" formControlName="title">
+      </label><br><br>
+
+      <label>
+        <h3><b>Plain Text:</b></h3>
+        <input type="text" formControlName="plainText">
+      </label><br><br>
+
+      <label><h3><b>Pin this note:<span id="pin"><input type="checkbox" formControlName="pinned"></span></b></h3>
+      </label><br><br><br>
+
+      <div formArrayName="checkLists">
+        <h3>CheckLists</h3> <a (click)="addCheckList()"><mat-icon>add</mat-icon></a><br>
+
+        <div *ngFor="let cl of checkLists.controls;  let i=index">
+          <div [formGroupName]="i">
+            <label>
+              CheckList Data:
+              <input type="text" formControlName="checkListData">
+            </label><br>
+            <label>
+              CheckList Status:
+              <input type="checkbox" formControlName="status">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div formArrayName="labels">
+        <h3>Labels</h3> <a (click)="addLabel()"><mat-icon>add</mat-icon></a><br>
+
+        <div *ngFor="let label of labels.controls; let i=index">
+          <div [formGroupName]="i">
+            <label>
+              Label:
+              <input type="text" formControlName="labelData">
+            </label>
+          </div>
+        </div>
+      </div><br><br>
+
+    <button type="submit" [disabled]="!profileForm.valid">Create Note</button>
+
+  </form>
+
+</mat-card>

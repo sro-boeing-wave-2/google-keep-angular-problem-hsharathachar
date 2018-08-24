@@ -1,0 +1,22 @@
+mat-card {
+    width: 40%;
+    margin: auto;
+    background-color: lightblue;
+    color: black;
+}
+
+h2 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+span {
+    width: 20%;
+}

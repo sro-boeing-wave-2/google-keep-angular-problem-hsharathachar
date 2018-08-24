@@ -1,0 +1,33 @@
+<!-- <div *ngFor="let note of notes">
+    <br><br><br>
+  id: {{note.id}}, title: {{note.title}}, plainText: {{note.plainText}}, pinned: {{note.pinned}}
+  <br>
+  checkLists:
+  <div *ngFor="let check of note.checkLists">
+    id: {{check.id}}, checkListData: {{check.checkListData}}, status: {{check.status}}
+  </div>
+  labels:
+  <div *ngFor="let label of note.labels">
+    id: {{label.id}}, labelData: {{label.labelData}}
+  </div>
+</div> -->
+
+<mat-grid-list cols="1">
+  <mat-card class="example-card" *ngFor="let note of notes">
+    <mat-card-content>
+      id: {{note.id}}, title: {{note.title}}, plainText: {{note.plainText}}, pinned: {{note.pinned}}
+      <br> checkLists:
+      <div *ngFor="let check of note.checkLists">
+        id: {{check.id}}, checkListData: {{check.checkListData}}, status: {{check.status}}
+      </div>
+      labels:
+      <div *ngFor="let label of note.labels">
+        id: {{label.id}}, labelData: {{label.labelData}}
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" id="btn3" (click)="editNote(note.id)">Edit Note</button>
+      <button mat-raised-button color="warn" id="btn4" (click) = "onClickDelete(note)">Delete Note</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-grid-list>

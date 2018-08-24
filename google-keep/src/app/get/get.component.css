@@ -1,0 +1,13 @@
+.example-card {
+    margin: auto;
+    /* display: inline-block; */
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+.buttons {
+    margin-left: 800px;
+    margin-top: 20%;
+}
+
+  

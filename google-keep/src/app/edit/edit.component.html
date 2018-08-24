@@ -1,0 +1,41 @@
+<section id="newNoteSection" *ngIf="note">
+  <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+
+    <label>
+      <input type="text" formControlName="title" placeholder="title" [value]="note['title']">
+    </label>
+    <label>
+      <input type="text" formControlName="plainText" placeholder="Text" [value]="note['plainText']">
+    </label>
+    <label>
+      <mat-checkbox formControlName="pinned">Pin Note</mat-checkbox>
+    </label>
+
+    <div formArrayName="checkLists">
+      <h2>CheckList <button id="btn-shift" mat-raised-button color="primary" type="button" (click)="addCheckList()"><mat-icon>add</mat-icon></button></h2>
+      <div *ngFor="let cl of checkLists.controls; let i=index">
+        <div [formGroupName]="i">
+          <label>
+            <input type="text" formControlName="checkListData" placeholder="title" [value]="note['checkLists'][i]['checkListData']">
+            <mat-checkbox formControlName="status">Pin CheckList</mat-checkbox>
+          </label>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div formArrayName="labels">
+      <h2>Labels <button id="btn-shift" mat-raised-button color="primary" type="button" (click)="addLabel()"><mat-icon>add</mat-icon></button></h2>
+      <div *ngFor="let label of labels.controls; let i=index">
+        <div [formGroupName]="i">
+          <label>
+            <input type="text" formControlName="labelData" placeholder="labelData" [value]="note['labels'][i]['labelData']">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" id="submitbutton">Update</button>
+  </form>
+</section>
